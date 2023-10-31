@@ -1,4 +1,5 @@
 from collections import deque
+from input import adjacency_list
 
 
 class Graph:
@@ -17,7 +18,7 @@ class Graph:
 
     # heuristic function with equal values for all nodes
     def h(self, n):
-        H = {"A": 1, "B": 1, "C": 1, "D": 1}
+        H = {"mapusa": 1, "panaji": 1, "ponda": 1, "margao": 1}
 
         return H[n]
 
@@ -97,11 +98,11 @@ class Graph:
         return None
 
 
-adjacency_list = {
-    "A": [("B", 1), ("C", 3), ("D", 7)],
-    "B": [("D", 5)],
-    "C": [("D", 12)],
-}
+# adjacency_list = {
+#     "A": [("B", 1), ("C", 3), ("D", 7)],
+#     "B": [("D", 5)],
+#     "C": [("D", 12)],
+# }
 
 graph1 = Graph(adjacency_list)
-graph1.a_star_algorithm("A", "D")
+graph1.a_star_algorithm("mapusa", "margao")
