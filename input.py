@@ -1,6 +1,7 @@
 from collections import deque
 import math
 
+
 def haversine(coord1, coord2):
     # Convert latitude and longitude from degrees to radians
     lon1, lat1 = map(math.radians, coord1)
@@ -59,6 +60,3 @@ for v in vertices:
             templist.append((longlat_to_name[dst], haversine(src, dst)))
 
     adjacency_list[longlat_to_name[v]] = templist
-
-
-# print(adjacency_list)

@@ -1,5 +1,7 @@
 from collections import deque
-from input import adjacency_list
+from input import *
+from main import *
+from plotting_resources import *
 
 
 class Graph:
@@ -104,5 +106,6 @@ class Graph:
 #     "C": [("D", 12)],
 # }
 
+prev_node = "mapusa"
 graph1 = Graph(adjacency_list)
 graph1.a_star_algorithm("mapusa", "margao")

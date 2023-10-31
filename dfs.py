@@ -3,7 +3,6 @@ from input import *
 from main import *
 from plotting_resources import *
 
-
 class Graph:
     def __init__(self, adjacency_list):
         self.adjacency_list = adjacency_list
@@ -39,9 +38,6 @@ start_node = "mapusa"
 prev_node = "mapusa"
 graph.dfs_traversal(start_node)
 
-
-# print(lines)
-# update index
 features = [
     {
         "type": "Feature",
@@ -61,7 +57,6 @@ features = [
 ]
 
 # Lon, Lat order.
-
 folium.plugins.TimestampedGeoJson(
     {
         "type": "FeatureCollection",
