@@ -67,7 +67,18 @@ class Graph:
 
                 reconst_path.reverse()
 
-                print("Path found: {}".format(reconst_path))
+                prev_node = start_node
+                for v in reconst_path:
+                    if v != start_node:
+                        lines.append(
+                            returnline(
+                                name_to_longlat[prev_node],
+                                name_to_longlat[v],
+                            )
+                        )
+                    prev_node = v
+
+                # print("Path found: {}".format(reconst_path))
                 return reconst_path
 
             # for all neighbors of the current node do
@@ -109,3 +120,37 @@ class Graph:
 prev_node = "mapusa"
 graph1 = Graph(adjacency_list)
 graph1.a_star_algorithm("mapusa", "margao")
+
+
+features = [
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "LineString",
+            "coordinates": line["coordinates"],
+        },
+        "properties": {
+            "times": line["dates"],
+            "style": {
+                "color": line["color"],
+                "weight": line["weight"] if "weight" in line else 5,
+            },
+        },
+    }
+    for line in lines
+]
+
+# Lon, Lat order.
+folium.plugins.TimestampedGeoJson(
+    {
+        "type": "FeatureCollection",
+        "features": features,
+    },
+    period="PT1M",
+    add_last_point=True,
+).add_to(m)
+m.save("index.html")
+
+import webbrowser
+
+webbrowser.open("index.html")
