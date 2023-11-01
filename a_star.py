@@ -5,13 +5,6 @@ from plotting_resources import *
 
 
 class Graph:
-    # example of adjacency list (or rather map)
-    # adjacency_list = {
-    #     "A": [("B", 1), ("C", 3), ("D", 7)],
-    #     "B": [("D", 5)],
-    #     "C": [("D", 12)],
-    # }
-
     def __init__(self, adjacency_list):
         self.adjacency_list = adjacency_list
 
@@ -122,35 +115,6 @@ graph1 = Graph(adjacency_list)
 graph1.a_star_algorithm("mapusa", "margao")
 
 
-features = [
-    {
-        "type": "Feature",
-        "geometry": {
-            "type": "LineString",
-            "coordinates": line["coordinates"],
-        },
-        "properties": {
-            "times": line["dates"],
-            "style": {
-                "color": line["color"],
-                "weight": line["weight"] if "weight" in line else 5,
-            },
-        },
-    }
-    for line in lines
-]
-
-# Lon, Lat order.
-folium.plugins.TimestampedGeoJson(
-    {
-        "type": "FeatureCollection",
-        "features": features,
-    },
-    period="PT1M",
-    add_last_point=True,
-).add_to(m)
-m.save("index.html")
-
+animate_map()
 import webbrowser
-
 webbrowser.open("index.html")

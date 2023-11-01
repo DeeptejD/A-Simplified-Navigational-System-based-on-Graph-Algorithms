@@ -29,7 +29,7 @@ class Graph:
 
     def dfs_traversal(self, start_node):
         visited = set()
-        print("DFS Traversal:")
+        # print("DFS Traversal:")
         self.dfs(start_node, visited)
 
 
@@ -38,34 +38,7 @@ start_node = "mapusa"
 prev_node = "mapusa"
 graph.dfs_traversal(start_node)
 
-features = [
-    {
-        "type": "Feature",
-        "geometry": {
-            "type": "LineString",
-            "coordinates": line["coordinates"],
-        },
-        "properties": {
-            "times": line["dates"],
-            "style": {
-                "color": line["color"],
-                "weight": line["weight"] if "weight" in line else 5,
-            },
-        },
-    }
-    for line in lines
-]
-
-# Lon, Lat order.
-folium.plugins.TimestampedGeoJson(
-    {
-        "type": "FeatureCollection",
-        "features": features,
-    },
-    period="PT1M",
-    add_last_point=True,
-).add_to(m)
-m.save("index.html")
+animate_map()
 
 import webbrowser
 webbrowser.open("index.html")

@@ -1,5 +1,6 @@
 from datetime import datetime
 
+lines = []
 your_unix_timestamp = 1609459200
 
 def returnline(coord1, coord2):
@@ -19,6 +20,3 @@ def returnline(coord1, coord2):
         ],
         "color": "blue",
     }
-
-
-lines = []
