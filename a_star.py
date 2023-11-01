@@ -116,5 +116,8 @@ graph1.a_star_algorithm("mapusa", "margao")
 
 
 animate_map()
+m.save("index.html")
+
 import webbrowser
+
 webbrowser.open("index.html")

@@ -26,7 +26,12 @@ class Graph:
             visited.add(node)
             for neighbor, _ in self.get_neighbors(node):
                 prev_node = node
-                self.dfs(neighbor, visited)
+                global radius
+                if (
+                    haversine(name_to_longlat[prev_node], name_to_longlat[neighbor])
+                    <= radius
+                ):
+                    self.dfs(neighbor, visited)
 
     def dfs_traversal(self, start_node):
         visited = set()
@@ -35,13 +40,17 @@ class Graph:
 
 
 graph = Graph(adjacency_list)
+radius = 30
 start_node = "mapusa"
 prev_node = "mapusa"
 graph.dfs_traversal(start_node)
 
 animate_map()
-m.save("index.html")
+longlat = name_to_longlat[start_node]
+radial_plotting((longlat[1], longlat[0]), radius)
 
+
+m.save("index.html")
 import webbrowser
 
 webbrowser.open("index.html")
