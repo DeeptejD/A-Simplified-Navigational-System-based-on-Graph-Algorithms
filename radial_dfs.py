@@ -1,7 +1,6 @@
+from plotting_resources import *
 from collections import deque
 from input import *
-from main import *
-from plotting_resources import *
 
 
 class Graph:
