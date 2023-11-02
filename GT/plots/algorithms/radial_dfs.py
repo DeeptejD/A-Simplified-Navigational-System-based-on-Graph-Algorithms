@@ -1,5 +1,5 @@
-from plotting_resources import *
-from input import *
+from .plotting_resources import *
+from .input import *
 
 # array that stores the edges (in object form) to be plotted
 lines = []
@@ -40,21 +40,30 @@ class Graph:
         # print("DFS Traversal:")
         self.dfs(start_node, visited)
 
+prev_node = ""
+start_node = ""
+radius = 0
 
-graph = Graph(adjacency_list)
-radius = 30
-start_node = "mapusa"
-prev_node = start_node
-graph.dfs_traversal(start_node)
+def run_radial_dfs(start):
+    graph = Graph(adjacency_list)
+    
+    global radius
+    global start_node
+    global prev_node
+
+    radius = 30
+    start_node = start
+    prev_node = start_node
+    
+    graph.dfs_traversal(start_node)
+
+    plot_all_markers()
+    animate_map(lines)
+    longlat = name_to_longlat[start_node]
+    radial_plotting((longlat[1], longlat[0]), radius)
 
 
-plot_all_markers()
-animate_map(lines)
-longlat = name_to_longlat[start_node]
-radial_plotting((longlat[1], longlat[0]), radius)
+    m.save("index.html")
+    import webbrowser
 
-
-m.save("index.html")
-import webbrowser
-
-webbrowser.open("index.html")
+    webbrowser.open("index.html")

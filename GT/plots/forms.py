@@ -50,3 +50,16 @@ class deg_centrality_form(forms.Form):
         choices=dropdown_choices,
         widget=forms.Select(attrs={'class': 'form-control'}),
     )
+
+class radial_form(forms.Form):
+    dropdown_choices = [
+        ('mapusa', 'Mapusa'),
+        ('panaji', 'Panaji'),
+        ('margao', 'Margao'),
+        ('ponda', 'Ponda'),
+    ]
+    
+    Start = forms.ChoiceField(
+        choices=dropdown_choices,
+        widget=forms.Select(attrs={'class': 'form-control'}),
+    )

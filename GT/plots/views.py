@@ -5,6 +5,7 @@ from .forms import *
 from .algorithms.dfs import runDFS
 from .algorithms.a_star import run_a_star
 from .algorithms.degree_centrality import run_degree_centrality
+from .algorithms.radial_dfs import run_radial_dfs
 
 # Create your views here.
 def index(request):
@@ -51,3 +52,15 @@ def centrality(request):
         form = deg_centrality_form()
     
     return render(request, "centrality.html", {"form": form})
+
+def radial(request):
+    if(request.method=='POST'):
+        form = radial_form(request.POST)
+        if form.is_valid():
+            Node = form.cleaned_data['Start']
+            run_radial_dfs(Node)
+
+            return HttpResponse("valid form")
+    else:
+        form = radial_form()
+    return render(request, "radial.html", {"form": form})
