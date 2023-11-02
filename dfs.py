@@ -2,6 +2,9 @@ from plotting_resources import *
 from collections import deque
 from input import *
 
+# array that stores the edges (in object form) to be plotted
+lines = []
+
 
 class Graph:
     def __init__(self, adjacency_list):
@@ -38,7 +41,8 @@ start_node = "mapusa"
 prev_node = "mapusa"
 graph.dfs_traversal(start_node)
 
-animate_map()
+plot_all_markers()
+animate_map(lines)
 m.save("index.html")
 
 import webbrowser

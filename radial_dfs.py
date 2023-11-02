@@ -2,6 +2,8 @@ from plotting_resources import *
 from collections import deque
 from input import *
 
+lines = []
+
 
 class Graph:
     def __init__(self, adjacency_list):
@@ -44,7 +46,9 @@ start_node = "mapusa"
 prev_node = "mapusa"
 graph.dfs_traversal(start_node)
 
-animate_map()
+
+plot_all_markers()
+animate_map(lines)
 longlat = name_to_longlat[start_node]
 radial_plotting((longlat[1], longlat[0]), radius)
 

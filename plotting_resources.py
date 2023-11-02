@@ -7,9 +7,7 @@ import math
 # initialize the map, with a static center
 m = folium.Map([15.4986, 73.8284], zoom_start=10)
 
-# array that stores the edges (in object form) to be plotted
-lines = []
-
+# this is 1 Jan 2021.. for no reason
 your_unix_timestamp = 1609459200
 
 
@@ -34,7 +32,7 @@ def returnline(coord1, coord2):
 
 
 # function that animates the map using array lines and updates the html file
-def animate_map():
+def animate_map(lines):
     features = [
         {
             "type": "Feature",
@@ -64,6 +62,25 @@ def animate_map():
     ).add_to(m)
 
 
+# it.. plots static map
+def plot_static_map(lines):
+    folium.PolyLine(
+        locations=lines,
+        color="#FF0000",
+        weight=5,
+        add_last_point=True,
+    ).add_to(m)
+
+
+# it plots all places with their names
+def plot_all_markers():
+    for name in name_to_longlat:
+        folium.Marker(
+            location=[name_to_longlat[name][1], name_to_longlat[name][0]],
+            popup=name,
+        ).add_to(m)
+
+
 # returns num_points number of coordinates around a give (long, lat) pair with specified radius
 def calculate_circle_coordinates(center_lat, center_lon, radius_km, num_points=100):
     circle_coordinates = []
@@ -77,6 +94,7 @@ def calculate_circle_coordinates(center_lat, center_lon, radius_km, num_points=1
     return circle_coordinates
 
 
+# it plots the polygon with coords returned by calculate_circle_coordinates()
 def radial_plotting(centercoords, radius_km):
     # Calculate circle coordinates
     circle_coordinates = calculate_circle_coordinates(

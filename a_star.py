@@ -2,6 +2,8 @@ from plotting_resources import *
 from collections import deque
 from input import *
 
+lines = []
+
 
 class Graph:
     def __init__(self, adjacency_list):
@@ -103,18 +105,13 @@ class Graph:
         return None
 
 
-# adjacency_list = {
-#     "A": [("B", 1), ("C", 3), ("D", 7)],
-#     "B": [("D", 5)],
-#     "C": [("D", 12)],
-# }
-
 prev_node = "mapusa"
 graph1 = Graph(adjacency_list)
 graph1.a_star_algorithm("mapusa", "margao")
 
 
-animate_map()
+plot_all_markers()
+animate_map(lines)
 m.save("index.html")
 
 import webbrowser
