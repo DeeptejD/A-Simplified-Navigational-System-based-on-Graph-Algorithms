@@ -1,6 +1,7 @@
 from .plotting_resources import *
 from .input import *
 
+
 # array that stores the edges (in object form) to be plotted
 lines = []
 
@@ -44,10 +45,12 @@ def runDFS(start, prev):
     prev_node = prev
     graph.dfs_traversal(start_node)
 
-    plot_all_markers()
-    animate_map(lines)
+    plot_all_markers(m)
+    animate_map(lines, m)
     m.save("index.html")
 
     import webbrowser
 
     webbrowser.open("index.html")
+
+m = folium.Map([15.4986, 73.8284], zoom_start=10)

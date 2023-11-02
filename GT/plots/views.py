@@ -25,11 +25,10 @@ def dfs(request):
             return HttpResponse("DFS algorithm executed successfully.")
 
     else:
-        if os.path.exists("index.html"):
-            os.remove("index.html")
+        # if os.path.exists("index.html"):
+        #     os.remove("index.html")
         form = dfs_input_form()
-    
-    return render(request, "dfs.html", {"form": form})
+        return render(request, "dfs.html", {"form": form})
 
 def a_star(request):
     if request.method=='POST':
