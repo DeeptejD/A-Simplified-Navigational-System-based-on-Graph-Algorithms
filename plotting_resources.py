@@ -44,7 +44,7 @@ def animate_map(lines):
                 "times": line["dates"],
                 "style": {
                     "color": line["color"],
-                    "weight": line["weight"] if "weight" in line else 5,
+                    # "weight": line["weight"] if "weight" in line else 5,
                 },
             },
         }
@@ -58,7 +58,7 @@ def animate_map(lines):
             "features": features,
         },
         period="PT1M",
-        add_last_point=True,
+        add_last_point=False,
     ).add_to(m)
 
 
@@ -67,7 +67,7 @@ def plot_static_map(lines):
     folium.PolyLine(
         locations=lines,
         color="#FF0000",
-        weight=5,
+        # weight=5,
         add_last_point=True,
     ).add_to(m)
 

@@ -1,4 +1,3 @@
-from collections import deque
 import math
 
 
@@ -39,6 +38,10 @@ edges = [
     [name_to_longlat["panaji"], name_to_longlat["margao"]],
     [name_to_longlat["ponda"], name_to_longlat["margao"]],
 ]
+
+for edge in edges:
+    if (edge[1], edge[0]) not in edges:
+        edges.append((edge[1], edge[0]))
 
 vertices = []
 for nm in name_to_longlat:

@@ -1,7 +1,7 @@
 from plotting_resources import *
-from collections import deque
 from input import *
 
+# array that stores the edges (in object form) to be plotted
 lines = []
 
 
@@ -27,8 +27,8 @@ centrality = graph.degree_centrality(node_to_check)
 print(f"Degree centrality of node {node_to_check}: {centrality}")
 
 
-plot_all_markers()
 animate_map(lines)
+plot_all_markers()
 m.save("index.html")
 
 import webbrowser

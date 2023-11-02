@@ -1,7 +1,7 @@
 from plotting_resources import *
-from collections import deque
 from input import *
 
+# array that stores the edges (in object form) to be plotted
 lines = []
 
 for edge in edges:
