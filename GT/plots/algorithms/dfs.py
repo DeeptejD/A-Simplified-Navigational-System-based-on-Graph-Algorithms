@@ -1,7 +1,8 @@
-from collections import deque
-from .input import *
-from .main import *
 from .plotting_resources import *
+from .input import *
+
+# array that stores the edges (in object form) to be plotted
+lines = []
 
 
 class Graph:
@@ -34,14 +35,19 @@ class Graph:
         self.dfs(start_node, visited)
 
 
-graph = Graph(adjacency_list)
-# start_node = "mapusa"
-# prev_node = "mapusa"
-# graph.dfs_traversal(start_node)
+prev_node = ""
 
-# animate_map()
-# m.save("index.html")
+def runDFS(start, prev):
+    graph = Graph(adjacency_list)
+    start_node = start
+    global prev_node
+    prev_node = prev
+    graph.dfs_traversal(start_node)
 
-# import webbrowser
+    plot_all_markers()
+    animate_map(lines)
+    m.save("index.html")
 
-# webbrowser.open("index.html")
+    import webbrowser
+
+    webbrowser.open("index.html")

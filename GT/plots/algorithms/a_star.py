@@ -1,7 +1,8 @@
-from collections import deque
-from input import *
-from main import *
-from plotting_resources import *
+from .plotting_resources import *
+from .input import *
+
+# array that stores the edges (in object form) to be plotted
+lines = []
 
 
 class Graph:
@@ -103,21 +104,18 @@ class Graph:
         print("Path does not exist!")
         return None
 
+prev_node = ""
 
-# adjacency_list = {
-#     "A": [("B", 1), ("C", 3), ("D", 7)],
-#     "B": [("D", 5)],
-#     "C": [("D", 12)],
-# }
+def run_a_star(start, end):
+    graph1 = Graph(adjacency_list)
+    global prev_node
+    prev_node = start
+    graph1.a_star_algorithm(start, end)
 
-prev_node = "mapusa"
-graph1 = Graph(adjacency_list)
-graph1.a_star_algorithm("mapusa", "margao")
+    plot_all_markers()
+    animate_map(lines)
+    m.save("index.html")
 
+    import webbrowser
 
-animate_map()
-m.save("index.html")
-
-import webbrowser
-
-webbrowser.open("index.html")
+    webbrowser.open("index.html")

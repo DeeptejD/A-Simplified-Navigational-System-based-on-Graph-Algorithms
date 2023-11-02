@@ -1,7 +1,8 @@
-from collections import deque
-from input import *
-from main import *
 from plotting_resources import *
+from input import *
+
+# array that stores the edges (in object form) to be plotted
+lines = []
 
 
 class Graph:
@@ -27,8 +28,9 @@ class Graph:
             for neighbor, _ in self.get_neighbors(node):
                 prev_node = node
                 global radius
+                global start_node
                 if (
-                    haversine(name_to_longlat[prev_node], name_to_longlat[neighbor])
+                    haversine(name_to_longlat[start_node], name_to_longlat[neighbor])
                     <= radius
                 ):
                     self.dfs(neighbor, visited)
@@ -42,10 +44,12 @@ class Graph:
 graph = Graph(adjacency_list)
 radius = 30
 start_node = "mapusa"
-prev_node = "mapusa"
+prev_node = start_node
 graph.dfs_traversal(start_node)
 
-animate_map()
+
+plot_all_markers()
+animate_map(lines)
 longlat = name_to_longlat[start_node]
 radial_plotting((longlat[1], longlat[0]), radius)
 

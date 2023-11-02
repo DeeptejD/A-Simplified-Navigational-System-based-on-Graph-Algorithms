@@ -1,4 +1,3 @@
-from collections import deque
 import math
 
 
@@ -25,8 +24,8 @@ def haversine(coord1, coord2):
 # ----- WRITE MANUALLY -----
 # maps name of place to (long, lat) pair
 name_to_longlat = {
-    "mapusa": (73.82836156804251, 15.498612717572485),
-    "panaji": (73.81162281198476, 15.599281625096822),
+    "mapusa": (73.81162281198476, 15.599281625096822),
+    "panaji": (73.82836156804251, 15.498612717572485),
     "ponda": (74.00632869171159, 15.408516991424435),
     "margao": (73.95717632777243, 15.272719080431443),
 }
@@ -39,6 +38,10 @@ edges = [
     [name_to_longlat["panaji"], name_to_longlat["margao"]],
     [name_to_longlat["ponda"], name_to_longlat["margao"]],
 ]
+
+for edge in edges:
+    if (edge[1], edge[0]) not in edges:
+        edges.append((edge[1], edge[0]))
 
 vertices = []
 for nm in name_to_longlat:
