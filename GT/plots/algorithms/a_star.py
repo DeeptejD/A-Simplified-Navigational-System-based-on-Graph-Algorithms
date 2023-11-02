@@ -4,7 +4,6 @@ from .input import *
 # array that stores the edges (in object form) to be plotted
 lines = []
 
-
 class Graph:
     def __init__(self, adjacency_list):
         self.adjacency_list = adjacency_list
@@ -107,13 +106,20 @@ class Graph:
 prev_node = ""
 
 def run_a_star(start, end):
+
+    lines.clear()
+
     graph1 = Graph(adjacency_list)
     global prev_node
     prev_node = start
+
+    lines.clear()
+
     graph1.a_star_algorithm(start, end)
 
     plot_all_markers()
     animate_map(lines)
+
     m.save("index.html")
 
     import webbrowser

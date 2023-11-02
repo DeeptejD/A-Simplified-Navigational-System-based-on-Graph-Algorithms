@@ -7,6 +7,8 @@ from .algorithms.a_star import run_a_star
 from .algorithms.degree_centrality import run_degree_centrality
 from .algorithms.radial_dfs import run_radial_dfs
 
+import os
+
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -15,12 +17,16 @@ def dfs(request):
     if request.method=='POST':
         form = dfs_input_form(request.POST)
         if form.is_valid():
+            if os.path.exists("index.html"):
+                os.remove("index.html")
             start_node = form.cleaned_data['Start']
             runDFS(start_node, start_node)
 
             return HttpResponse("DFS algorithm executed successfully.")
 
     else:
+        if os.path.exists("index.html"):
+            os.remove("index.html")
         form = dfs_input_form()
     
     return render(request, "dfs.html", {"form": form})
