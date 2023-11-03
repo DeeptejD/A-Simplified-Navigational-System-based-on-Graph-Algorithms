@@ -17,16 +17,15 @@ def dfs(request):
     if request.method=='POST':
         form = dfs_input_form(request.POST)
         if form.is_valid():
-            if os.path.exists("index.html"):
-                os.remove("index.html")
             start_node = form.cleaned_data['Start']
             runDFS(start_node, start_node)
 
-            return HttpResponse("DFS algorithm executed successfully.")
+            # this part is used to render the index.html file in the def_template
+            with open("index.html", "r") as html_file:
+                html_content = html_file.read()
 
+            return render(request, 'dfs_template.html', {'html_content': html_content})
     else:
-        # if os.path.exists("index.html"):
-        #     os.remove("index.html")
         form = dfs_input_form()
         return render(request, "dfs.html", {"form": form})
 

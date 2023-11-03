@@ -49,8 +49,8 @@ def runDFS(start, prev):
     animate_map(lines, m)
     m.save("index.html")
 
-    import webbrowser
+    # import webbrowser
 
-    webbrowser.open("index.html")
+    # webbrowser.open("index.html")
 
 m = folium.Map([15.4986, 73.8284], zoom_start=10)
