@@ -1,11 +1,11 @@
 from .plotting_resources import *
 from .input import *
 
-# array that stores the edges (in object form) to be plotted
-lines = []
 
 class Graph:
     def __init__(self, adjacency_list):
+        self.lines = []
+        self.your_unix_timestamp = 1609459200
         self.adjacency_list = adjacency_list
 
     def get_neighbors(self, v):
@@ -63,12 +63,14 @@ class Graph:
                 prev_node = start_node
                 for v in reconst_path:
                     if v != start_node:
-                        lines.append(
+                        self.lines.append(
                             returnline(
                                 name_to_longlat[prev_node],
                                 name_to_longlat[v],
+                                self.your_unix_timestamp,
                             )
                         )
+                        self.your_unix_timestamp += 450
                     prev_node = v
 
                 # print("Path found: {}".format(reconst_path))
@@ -103,25 +105,20 @@ class Graph:
         print("Path does not exist!")
         return None
 
-prev_node = ""
 
 def run_a_star(start, end):
+    graph = Graph(adjacency_list)
 
-    lines.clear()
+    # plotting requirements
+    m = folium.Map([15.4986, 73.8284], zoom_start=10)
 
-    graph1 = Graph(adjacency_list)
-    global prev_node
-    prev_node = start
+    graph.a_star_algorithm(start, end)
 
-    lines.clear()
-
-    graph1.a_star_algorithm(start, end)
-
-    plot_all_markers()
-    animate_map(lines)
+    plot_all_markers(m)
+    animate_map(graph.lines, m)
 
     m.save("index.html")
 
-    import webbrowser
+    # import webbrowser
 
-    webbrowser.open("index.html")
+    # webbrowser.open("index.html")

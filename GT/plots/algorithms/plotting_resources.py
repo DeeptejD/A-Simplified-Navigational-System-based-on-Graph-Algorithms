@@ -4,16 +4,9 @@ from .input import *
 import folium
 import math
 
-# initialize the map, with a static center
-# m = folium.Map([15.4986, 73.8284], zoom_start=10)
-
-# this is 1 Jan 2021.. for no reason
-your_unix_timestamp = 1609459200
-
 
 # returns the object that can be used to plot coord1 and coord2 (both are (long, lat) pairs)
-def returnline(coord1, coord2):
-    global your_unix_timestamp
+def returnline(coord1, coord2, your_unix_timestamp):
     d1 = str(datetime.utcfromtimestamp(your_unix_timestamp))
     your_unix_timestamp += 450
     d2 = str(datetime.utcfromtimestamp(your_unix_timestamp))
@@ -66,7 +59,7 @@ def animate_map(lines, m):
 def plot_static_map(lines, m):
     folium.PolyLine(
         locations=lines,
-        color="#FF0000",
+        color="#000000",
         # weight=5,
         add_last_point=True,
     ).add_to(m)

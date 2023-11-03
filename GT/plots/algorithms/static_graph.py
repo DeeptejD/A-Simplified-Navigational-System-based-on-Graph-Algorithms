@@ -1,17 +1,15 @@
-from plotting_resources import *
-from input import *
+from .plotting_resources import *
+from .input import *
 
-# array that stores the edges (in object form) to be plotted
-lines = []
 
-for edge in edges:
-    lines.append([[edge[0][1], edge[0][0]], [edge[1][1], edge[1][0]]])
+def plot_static():
+    # plotting requirements
+    m = folium.Map([15.4986, 73.8284], zoom_start=10)
+    lines = []
 
-plot_all_markers()
-plot_static_map(lines)
+    for edge in edges:
+        lines.append([[edge[0][1], edge[0][0]], [edge[1][1], edge[1][0]]])
 
-# Save the map to an HTML file
-m.save("index.html")
-import webbrowser
-
-webbrowser.open("index.html")
+    plot_all_markers(m)
+    plot_static_map(lines, m)
+    m.save("static_graph.html")

@@ -2,55 +2,54 @@ from .plotting_resources import *
 from .input import *
 
 
-# array that stores the edges (in object form) to be plotted
-lines = []
-
-
 class Graph:
     def __init__(self, adjacency_list):
+        self.lines = []
+        self.your_unix_timestamp = 1609459200
         self.adjacency_list = adjacency_list
 
     def get_neighbors(self, v):
         return self.adjacency_list[v]
 
-    def dfs(self, node, visited):
+    def dfs(self, node, visited, prev_node):
         if node not in visited:
             # print(node)
-            global prev_node
             if node != prev_node:
-                lines.append(
+                self.lines.append(
                     returnline(
                         name_to_longlat[prev_node],
                         name_to_longlat[node],
+                        self.your_unix_timestamp,
                     )
                 )
+                # beacuse the updated value wont reflect
+                self.your_unix_timestamp += 450
 
             visited.add(node)
             for neighbor, _ in self.get_neighbors(node):
                 prev_node = node
-                self.dfs(neighbor, visited)
+                self.dfs(neighbor, visited, prev_node)
 
-    def dfs_traversal(self, start_node):
+    def dfs_traversal(self, start_node, prev_node):
         visited = set()
         # print("DFS Traversal:")
-        self.dfs(start_node, visited)
+        self.dfs(start_node, visited, prev_node)
 
-
-prev_node = ""
 
 def runDFS(start, prev):
     graph = Graph(adjacency_list)
     start_node = start
-    global prev_node
     prev_node = prev
-    graph.dfs_traversal(start_node)
+
+    # plotting requirements
+    m = folium.Map([15.4986, 73.8284], zoom_start=10)
+
+    graph.dfs_traversal(start_node, prev_node)
 
     plot_all_markers(m)
-    animate_map(lines, m)
+    animate_map(graph.lines, m)
     m.save("index.html")
 
     # import webbrowser
 
     # webbrowser.open("index.html")
-
-m = folium.Map([15.4986, 73.8284], zoom_start=10)

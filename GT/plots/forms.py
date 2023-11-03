@@ -58,8 +58,16 @@ class radial_form(forms.Form):
         ('margao', 'Margao'),
         ('ponda', 'Ponda'),
     ]
+
     
     Start = forms.ChoiceField(
         choices=dropdown_choices,
         widget=forms.Select(attrs={'class': 'form-control'}),
+    
+    )
+
+    radius_in_km = forms.DecimalField(
+        label="Radius (in kilometers)",
+        min_value=0.1,  # Set the minimum allowed value for the radius
+        widget=forms.NumberInput(attrs={'type': 'number', 'step': '0.01'}),  # Use type="number" and specify the step for decimal places
     )
