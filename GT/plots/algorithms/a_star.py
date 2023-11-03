@@ -5,17 +5,18 @@ from .input import *
 class Graph:
     def __init__(self, adjacency_list):
         self.lines = []
+        self.end = ""
         self.your_unix_timestamp = 1609459200
         self.adjacency_list = adjacency_list
 
     def get_neighbors(self, v):
         return self.adjacency_list[v]
 
-    # heuristic function with equal values for all nodes
+    # heuristic function; idea: https://stackoverflow.com/questions/16869920/a-heuristic-calculation-with-euclidean-distance
     def h(self, n):
-        H = {"mapusa": 1, "panaji": 1, "ponda": 1, "margao": 1}
-
-        return H[n]
+        x = name_to_longlat[n]
+        y = name_to_longlat[self.end]
+        return math.sqrt((x[0] - x[1]) ** 2 + (y[0] - y[1]) ** 2)
 
     def a_star_algorithm(self, start_node, stop_node):
         # open_list is a list of nodes which have been visited, but who's neighbors
@@ -108,6 +109,7 @@ class Graph:
 
 def run_a_star(start, end):
     graph = Graph(adjacency_list)
+    graph.end = end
 
     # plotting requirements
     m = folium.Map([15.4986, 73.8284], zoom_start=10)
