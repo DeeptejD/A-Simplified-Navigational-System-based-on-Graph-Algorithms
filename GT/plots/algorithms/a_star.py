@@ -12,7 +12,8 @@ class Graph:
     def get_neighbors(self, v):
         return self.adjacency_list[v]
 
-    # heuristic function; idea: https://stackoverflow.com/questions/16869920/a-heuristic-calculation-with-euclidean-distance
+    # heuristic function; idea: https://stackoverflow.com/questions/16869920/a-heuristic-calculation-with-euclidean-distance ;
+    # https://softwareengineering.stackexchange.com/questions/270839/mathematically-correct-a-heuristic-distance-estimator-for-a-latitude-longit
     def h(self, n):
         x = name_to_longlat[n]
         y = name_to_longlat[self.end]
