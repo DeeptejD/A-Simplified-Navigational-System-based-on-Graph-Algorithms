@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DFS Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        } */
+    </style>
+</head>
+
+<body class=" overflow-x-hidden overflow-y-hidden p-5 pt-8 h-screen w-screen bg-green-100"
+    style="background-image: url(https://www.apple.com/newsroom/images/product/apps/standard/Apple_Maps_01302020_LP_hero.jpg.og.jpg); backdrop-filter: blur(8px);">
+    <div class="flex flex-col w-full h-full space-y-2">
+        <div class=""><a href="{% url 'index' %}" class="p-4 rounded-xl rounded-b-none text-gray-950 font-bold hover:none bg-gray-400 mb-6 mt-4">Back to Menu</a></div>
+        <div class="w-full flex-grow rounded-2xl rounded-tl-none shadow-2xl overflow-hidden">
+            <!-- <h1>DFS Results</h1>  -->
+            {{ html_content|safe }}
+        </div>
+    </div>
+
+</body>
+
+</html>

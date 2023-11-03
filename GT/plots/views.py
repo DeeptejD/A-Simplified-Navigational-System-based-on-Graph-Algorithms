@@ -24,7 +24,7 @@ def dfs(request):
             with open("index.html", "r") as html_file:
                 html_content = html_file.read()
 
-            return render(request, 'dfs_template.html', {'html_content': html_content})
+            return render(request, 'render_map_template.html', {'html_content': html_content})
     else:
         form = dfs_input_form()
         return render(request, "dfs.html", {"form": form})
@@ -38,7 +38,11 @@ def a_star(request):
 
             run_a_star(Start, End)
 
-            return HttpResponse("valid form")
+            # this part is used to render the index.html file in the def_template
+            with open("index.html", "r") as html_file:
+                html_content = html_file.read()
+
+            return render(request, 'render_map_template.html', {'html_content': html_content})
     else:
         form = a_star_form()
 
@@ -51,7 +55,11 @@ def centrality(request):
             Node = form.cleaned_data['Node']
             run_degree_centrality(Node)
 
-            return HttpResponse("valid form")
+            # this part is used to render the index.html file in the def_template
+            with open("index.html", "r") as html_file:
+                html_content = html_file.read()
+
+            return render(request, 'render_map_template.html', {'html_content': html_content})
     else:
         form = deg_centrality_form()
     
@@ -64,7 +72,11 @@ def radial(request):
             Node = form.cleaned_data['Start']
             run_radial_dfs(Node)
 
-            return HttpResponse("valid form")
+            # this part is used to render the index.html file in the def_template
+            with open("index.html", "r") as html_file:
+                html_content = html_file.read()
+
+            return render(request, 'render_map_template.html', {'html_content': html_content})
     else:
         form = radial_form()
     return render(request, "radial.html", {"form": form})
