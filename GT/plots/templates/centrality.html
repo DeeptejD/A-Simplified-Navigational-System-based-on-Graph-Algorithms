@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
     <title>Degree Centrality</title>
 </head>
 
@@ -18,19 +21,20 @@
                     {% csrf_token %}
 
                     <div class="mb-4">
-                        <label for="{{ form.Start.id_for_label }}" class="text-gray-950 text-2xl mb-4">Select the
+                        <label class="text-gray-950 text-4xl font-semibold mb-4">Select the
                             starting
                             node</label>
                         {{ form.Node }}
                     </div>
-                    <input type="submit" value="Submit"
-                        class="bg-gray-800 text-md hover:bg-gray-950 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    <!-- {{form.submit}} -->
+                    <button type="submit" value="Submit"
+                        class="p-3 px-5 bg-gray-950 bg-opacity-80 hover:bg-opacity-100 text-white backdrop-blur-2xl rounded-2xl transition transition-all duration-300 hover:-translate-y-1 hover:translate-x-1 shadow-xl">
+                        Submit
+                    </button>
                 </form>
             </div>
         </div>
 
-        <div class="w-2/3">
+        <div class="w-2/3 overflow-hidden rounded-r-2xl">
             {{ html_content|safe }}
         </div>
     </div>

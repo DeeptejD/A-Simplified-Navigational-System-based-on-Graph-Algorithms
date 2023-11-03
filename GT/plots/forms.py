@@ -10,7 +10,7 @@ class dfs_input_form(forms.Form):
     
     Start = forms.ChoiceField(
         choices=dropdown_choices,
-        widget=forms.Select(attrs={'class': 'form-control'}),
+        widget=forms.Select(attrs={'class': ' block w-full h-20 rounded-2xl shadow-2xl border-2 appearance-none text-gray-950 pl-6'}),
     )
 
 class a_star_form(forms.Form):
@@ -23,7 +23,7 @@ class a_star_form(forms.Form):
     
     Start = forms.ChoiceField(
         choices=dropdown_choices_start,
-        widget=forms.Select(attrs={'class': 'form-control'}),
+        widget=forms.Select(attrs={'class': ' block w-full h-20 rounded-2xl shadow-2xl border-2 appearance-none text-gray-950 pl-6 mb-4'}),
     )
 
     dropdown_choices_end = [
@@ -35,7 +35,7 @@ class a_star_form(forms.Form):
     
     End = forms.ChoiceField(
         choices=dropdown_choices_end,
-        widget=forms.Select(attrs={'class': 'form-control'}),
+        widget=forms.Select(attrs={'class': ' block w-full h-20 rounded-2xl shadow-2xl border-2 appearance-none text-gray-950 pl-6'}),
     )
 
 class deg_centrality_form(forms.Form):
@@ -48,7 +48,7 @@ class deg_centrality_form(forms.Form):
     
     Node = forms.ChoiceField(
         choices=dropdown_choices,
-        widget=forms.Select(attrs={'class': 'form-control'}),
+        widget=forms.Select(attrs={'class': ' block w-full h-20 rounded-2xl shadow-2xl border-2 appearance-none text-gray-950 pl-6'}),
     )
 
 class radial_form(forms.Form):
@@ -62,12 +62,12 @@ class radial_form(forms.Form):
     
     Start = forms.ChoiceField(
         choices=dropdown_choices,
-        widget=forms.Select(attrs={'class': 'form-control'}),
+        widget=forms.Select(attrs={'class': ' block w-full h-20 rounded-2xl shadow-2xl border-2 appearance-none text-gray-950 pl-6'}),
     
     )
 
     radius_in_km = forms.DecimalField(
         label="Radius (in kilometers)",
-        min_value=0.1,  # Set the minimum allowed value for the radius
-        widget=forms.NumberInput(attrs={'type': 'number', 'step': '0.01'}),  # Use type="number" and specify the step for decimal places
+        min_value=0.1, 
+        widget=forms.NumberInput(attrs={'type': 'number', 'step': '0.01', 'class': ' block w-full h-20 rounded-2xl shadow-2xl border-2 appearance-none text-gray-950 pl-6'}),
     )
