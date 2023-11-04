@@ -6,6 +6,12 @@ class dfs_input_form(forms.Form):
         ('panaji', 'Panaji'),
         ('margao', 'Margao'),
         ('ponda', 'Ponda'),
+        ('vasco da gama', 'Vasco da Gama'),
+        ('bicholim', 'Bicholim'),
+        ('pernem', 'Pernem'),
+        ('calangute', 'Calangute'),
+        ('old goa', 'Old Goa'),
+        ('valpoi', 'Valpoi'),
     ]
     
     Start = forms.ChoiceField(
@@ -19,6 +25,12 @@ class a_star_form(forms.Form):
         ('panaji', 'Panaji'),
         ('margao', 'Margao'),
         ('ponda', 'Ponda'),
+        ('vasco da gama', 'Vasco da Gama'),
+        ('bicholim', 'Bicholim'),
+        ('pernem', 'Pernem'),
+        ('calangute', 'Calangute'),
+        ('old goa', 'Old Goa'),
+        ('valpoi', 'Valpoi'),
     ]
     
     Start = forms.ChoiceField(
@@ -31,6 +43,12 @@ class a_star_form(forms.Form):
         ('panaji', 'Panaji'),
         ('margao', 'Margao'),
         ('ponda', 'Ponda'),
+        ('vasco da gama', 'Vasco da Gama'),
+        ('bicholim', 'Bicholim'),
+        ('pernem', 'Pernem'),
+        ('calangute', 'Calangute'),
+        ('old goa', 'Old Goa'),
+        ('valpoi', 'Valpoi'),
     ]
     
     End = forms.ChoiceField(
@@ -44,6 +62,12 @@ class deg_centrality_form(forms.Form):
         ('panaji', 'Panaji'),
         ('margao', 'Margao'),
         ('ponda', 'Ponda'),
+        ('vasco da gama', 'Vasco da Gama'),
+        ('bicholim', 'Bicholim'),
+        ('pernem', 'Pernem'),
+        ('calangute', 'Calangute'),
+        ('old goa', 'Old Goa'),
+        ('valpoi', 'Valpoi'),
     ]
     
     Node = forms.ChoiceField(
@@ -57,6 +81,12 @@ class radial_form(forms.Form):
         ('panaji', 'Panaji'),
         ('margao', 'Margao'),
         ('ponda', 'Ponda'),
+        ('vasco da gama', 'Vasco da Gama'),
+        ('bicholim', 'Bicholim'),
+        ('pernem', 'Pernem'),
+        ('calangute', 'Calangute'),
+        ('old goa', 'Old Goa'),
+        ('valpoi', 'Valpoi'),
     ]
 
     
