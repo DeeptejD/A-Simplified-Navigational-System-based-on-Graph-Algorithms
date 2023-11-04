@@ -1,0 +1,59 @@
+------------------ data set 1 ------------------
+name_to_longlat = {
+    "mapusa": (73.81162281198476, 15.599281625096822),
+    "panaji": (73.82836156804251, 15.498612717572485),
+    "ponda": (74.00632869171159, 15.408516991424435),
+    "margao": (73.95717632777243, 15.272719080431443),
+}
+
+edges = [
+    [name_to_longlat["mapusa"], name_to_longlat["panaji"]],
+    [name_to_longlat["mapusa"], name_to_longlat["ponda"]],
+    [name_to_longlat["mapusa"], name_to_longlat["margao"]],
+    [name_to_longlat["panaji"], name_to_longlat["margao"]],
+    [name_to_longlat["ponda"], name_to_longlat["margao"]],
+]
+
+------------------ data set 2 ------------------
+name_to_longlat = {
+    "panaji": (73.828361568041, 15.498612717572783),
+    "margao": (73.9578529309122, 15.27239272642025),
+    "vasco da gama": (73.81295939900215, 15.396140967598157),
+    "mapusa": (73.81131388798627, 15.590057520569246),
+    "ponda": (74.00677542556889, 15.400819046721182),
+    "bicholim": (73.94656471799584, 15.586494010793942),
+    "pernem": (73.79693355724251, 15.716656049637862),
+    "calangute": (73.7631449593016, 15.546140223570873),
+    "old goa": (73.91544788608829, 15.500805717621859),
+    "valpoi": (74.12218736466468, 15.523959994980771),
+}
+
+edges = [
+    [name_to_longlat["panaji"], name_to_longlat["margao"]],
+    [name_to_longlat["panaji"], name_to_longlat["mapusa"]],
+    [name_to_longlat["margao"], name_to_longlat["panaji"]],
+    [name_to_longlat["margao"], name_to_longlat["vasco da gama"]],
+    [name_to_longlat["margao"], name_to_longlat["mapusa"]],
+    [name_to_longlat["margao"], name_to_longlat["ponda"]],
+    [name_to_longlat["vasco da gama"], name_to_longlat["margao"]],
+    [name_to_longlat["vasco da gama"], name_to_longlat["ponda"]],
+    [name_to_longlat["vasco da gama"], name_to_longlat["bicholim"]],
+    [name_to_longlat["mapusa"], name_to_longlat["panaji"]],
+    [name_to_longlat["mapusa"], name_to_longlat["margao"]],
+    [name_to_longlat["mapusa"], name_to_longlat["ponda"]],
+    [name_to_longlat["ponda"], name_to_longlat["margao"]],
+    [name_to_longlat["ponda"], name_to_longlat["mapusa"]],
+    [name_to_longlat["ponda"], name_to_longlat["bicholim"]],
+    [name_to_longlat["ponda"], name_to_longlat["calangute"]],
+    [name_to_longlat["bicholim"], name_to_longlat["vasco da gama"]],
+    [name_to_longlat["bicholim"], name_to_longlat["ponda"]],
+    [name_to_longlat["bicholim"], name_to_longlat["pernem"]],
+    [name_to_longlat["pernem"], name_to_longlat["bicholim"]],
+    [name_to_longlat["pernem"], name_to_longlat["calangute"]],
+    [name_to_longlat["calangute"], name_to_longlat["ponda"]],
+    [name_to_longlat["calangute"], name_to_longlat["old goa"]],
+    [name_to_longlat["calangute"], name_to_longlat["pernem"]],
+    [name_to_longlat["old goa"], name_to_longlat["calangute"]],
+    [name_to_longlat["old goa"], name_to_longlat["valpoi"]],
+    [name_to_longlat["valpoi"], name_to_longlat["old goa"]],
+]
