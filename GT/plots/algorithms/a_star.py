@@ -14,10 +14,12 @@ class Graph:
 
     # heuristic function; idea: https://stackoverflow.com/questions/16869920/a-heuristic-calculation-with-euclidean-distance ;
     # https://softwareengineering.stackexchange.com/questions/270839/mathematically-correct-a-heuristic-distance-estimator-for-a-latitude-longit
+    # not good why? this is not a coordinate plane, it is latitude and longitude and here haversine gives the distance
+    # thus haversine
     def h(self, n):
         x = name_to_longlat[n]
         y = name_to_longlat[self.end]
-        return math.sqrt((x[0] - x[1]) ** 2 + (y[0] - y[1]) ** 2)
+        return haversine(x, y)
 
     def a_star_algorithm(self, start_node, stop_node):
         # open_list is a list of nodes which have been visited, but who's neighbors
