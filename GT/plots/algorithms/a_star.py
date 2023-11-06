@@ -59,7 +59,6 @@ class Graph:
                     n = parents[n]
 
                 reconst_path.append(start_node)
-
                 reconst_path.reverse()
 
                 prev_node = start_node
@@ -76,7 +75,7 @@ class Graph:
                     prev_node = v
 
                 # print("Path found: {}".format(reconst_path))
-                return reconst_path
+                return [reconst_path, g[self.end]]
 
             # for all neighbors of the current node do
             for m, weight in self.get_neighbors(n):
@@ -108,6 +107,7 @@ class Graph:
         return None
 
 
+# returns a list with {a list containing chosen path} and {the cost/distance of that path}
 def run_a_star(start, end):
     graph = Graph(adjacency_list)
     graph.end = end
@@ -115,13 +115,10 @@ def run_a_star(start, end):
     # plotting requirements
     m = folium.Map([15.4986, 73.8284], zoom_start=10)
 
-    graph.a_star_algorithm(start, end)
+    v = graph.a_star_algorithm(start, end)
 
     plot_all_markers(m)
     animate_map(graph.lines, m)
-
     m.save("index.html")
 
-    # import webbrowser
-
-    # webbrowser.open("index.html")
+    return v

@@ -7,6 +7,7 @@ class Graph:
         self.start_node = ""
         self.prev_node = ""
         self.radius = 0
+        self.path = []
         self.lines = []
         self.your_unix_timestamp = 1609459200
         self.adjacency_list = adjacency_list
@@ -17,7 +18,7 @@ class Graph:
     def dfs(self, node, visited):
         if node not in visited:
             # print(node)
-            # global prev_node
+            self.path.append(node)
             if node != self.prev_node:
                 self.lines.append(
                     returnline(
@@ -41,25 +42,24 @@ class Graph:
 
     def dfs_traversal(self, start_node):
         visited = set()
-        # print("DFS Traversal:")
         self.dfs(start_node, visited)
 
 
+# returns a list with the radial dfs (its not a path, its dfs)
 def run_radial_dfs(start, radius_in_km):
     graph = Graph(adjacency_list)
 
     radius = radius_in_km
     graph.radius = radius_in_km
-
     start_node = start
     graph.start_node = start
-
     graph.prev_node = start_node
 
     # plotting requirements
     m = folium.Map([15.4986, 73.8284], zoom_start=10)
 
     graph.dfs_traversal(start_node)
+    v = graph.path
 
     plot_all_markers(m)
     animate_map(graph.lines, m)
@@ -67,6 +67,4 @@ def run_radial_dfs(start, radius_in_km):
     radial_plotting((longlat[1], longlat[0]), radius, m)
 
     m.save("index.html")
-    # import webbrowser
-
-    # webbrowser.open("index.html")
+    return v

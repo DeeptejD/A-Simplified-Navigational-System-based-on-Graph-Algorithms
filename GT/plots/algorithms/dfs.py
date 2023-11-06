@@ -4,6 +4,7 @@ from .input import *
 
 class Graph:
     def __init__(self, adjacency_list):
+        self.path = []
         self.lines = []
         self.your_unix_timestamp = 1609459200
         self.adjacency_list = adjacency_list
@@ -14,6 +15,7 @@ class Graph:
     def dfs(self, node, visited, prev_node):
         if node not in visited:
             # print(node)
+            self.path.append(node)
             if node != prev_node:
                 self.lines.append(
                     returnline(
@@ -32,10 +34,10 @@ class Graph:
 
     def dfs_traversal(self, start_node, prev_node):
         visited = set()
-        # print("DFS Traversal:")
         self.dfs(start_node, visited, prev_node)
 
 
+# returns a list with the dfs (its not a path, its dfs)
 def runDFS(start, prev):
     graph = Graph(adjacency_list)
     start_node = start
@@ -45,11 +47,10 @@ def runDFS(start, prev):
     m = folium.Map([15.4986, 73.8284], zoom_start=10)
 
     graph.dfs_traversal(start_node, prev_node)
+    v = graph.path
 
     plot_all_markers(m)
     animate_map(graph.lines, m)
     m.save("index.html")
 
-    # import webbrowser
-
-    # webbrowser.open("index.html")
+    return v

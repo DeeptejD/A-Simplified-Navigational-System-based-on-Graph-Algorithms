@@ -25,6 +25,7 @@ class Graph:
         return degree
 
 
+# returns the degree centrality of 'node'
 def run_degree_centrality(node):
     graph = Graph(adjacency_list)
     node_to_check = node
@@ -33,12 +34,9 @@ def run_degree_centrality(node):
     m = folium.Map([15.4986, 73.8284], zoom_start=10)
 
     centrality = graph.degree_centrality(node_to_check)
-    print(f"Degree centrality of node {node_to_check}: {centrality}")
 
     animate_map(graph.lines, m)
     plot_all_markers(m)
     m.save("index.html")
 
-    # import webbrowser
-
-    # webbrowser.open("index.html")
+    return centrality
