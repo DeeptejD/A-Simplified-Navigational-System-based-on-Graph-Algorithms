@@ -14,10 +14,12 @@ class Graph:
 
     # heuristic function; idea: https://stackoverflow.com/questions/16869920/a-heuristic-calculation-with-euclidean-distance ;
     # https://softwareengineering.stackexchange.com/questions/270839/mathematically-correct-a-heuristic-distance-estimator-for-a-latitude-longit
+    # not good why? this is not a coordinate plane, it is latitude and longitude and here haversine gives the distance
+    # thus... haversine
     def h(self, n):
         x = name_to_longlat[n]
         y = name_to_longlat[self.end]
-        return math.sqrt((x[0] - x[1]) ** 2 + (y[0] - y[1]) ** 2)
+        return haversine(x, y)
 
     def a_star_algorithm(self, start_node, stop_node):
         # open_list is a list of nodes which have been visited, but who's neighbors
@@ -59,7 +61,6 @@ class Graph:
                     n = parents[n]
 
                 reconst_path.append(start_node)
-
                 reconst_path.reverse()
 
                 prev_node = start_node
@@ -76,7 +77,7 @@ class Graph:
                     prev_node = v
 
                 # print("Path found: {}".format(reconst_path))
-                return reconst_path
+                return [reconst_path, g[self.end]]
 
             # for all neighbors of the current node do
             for m, weight in self.get_neighbors(n):
@@ -108,6 +109,7 @@ class Graph:
         return None
 
 
+# returns a list with {a list containing chosen path} and {the cost/distance of that path}
 def run_a_star(start, end):
     graph = Graph(adjacency_list)
     graph.end = end
@@ -115,13 +117,10 @@ def run_a_star(start, end):
     # plotting requirements
     m = folium.Map([15.4986, 73.8284], zoom_start=10)
 
-    graph.a_star_algorithm(start, end)
+    v = graph.a_star_algorithm(start, end)
 
     plot_all_markers(m)
     animate_map(graph.lines, m)
-
     m.save("index.html")
 
-    # import webbrowser
-
-    # webbrowser.open("index.html")
+    return v

@@ -69,7 +69,7 @@ edges = [
 
 
 for edge in edges:
-    if (edge[1], edge[0]) not in edges:
+    if [edge[1], edge[0]] not in edges:
         edges.append((edge[1], edge[0]))
 
 vertices = []
