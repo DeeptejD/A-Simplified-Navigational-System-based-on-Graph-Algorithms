@@ -14,7 +14,7 @@ python -m pip install django
 cd GT
 ```
 
-# To start the development server
+# To start the development server 
 
 ```bash
 python manage.py runserver
